@@ -1,5 +1,5 @@
 import prisma from "@/serverhelper/prisma"
-export default async function Handler(req,res){
+export default async function handler(req,res){
     
     if(req.method==="POST"){
         const user=req.body
