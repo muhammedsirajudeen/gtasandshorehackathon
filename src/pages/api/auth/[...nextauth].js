@@ -42,18 +42,21 @@ export const authOptions = {
         })
     ],
     secret:process.env.JWT_SECRET,
+ 
     callbacks:{
         async signIn({user,account,profile,email,credentials}){
             if(account.provider==="google"){
                 try{
-                    user.id=uuidv4()
-                    //checking if user exists in the database
                     
+                    //checking if user exists in the database
+                    console.log(user)
                     let dbUser=await prisma.user.findFirst({where:{username:user.email}})
                     console.log(dbUser)
                     if(dbUser){
+                        user.id=dbUser.id
                         return true
                     }else{
+                        user.id=uuidv4()
                         await prisma.user.create(
                             {
                                 data:{
@@ -78,7 +81,9 @@ export const authOptions = {
             return session
         },
         async jwt({token,account,profile}){
+                console.log(token.sub)
                 let user=await prisma.user.findUnique({where:{id:token.sub}})
+                console.log(user)
                 token.username=user.username 
 
             return token
