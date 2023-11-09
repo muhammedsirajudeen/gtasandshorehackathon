@@ -9,13 +9,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@prisma/client": "^5.5.2",
+    "axios": "^1.6.0",
+    "next": "14.0.0",
+    "next-auth": "^4.24.4",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.0.0"
+    "react-spinners": "^0.13.8",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10",
     "postcss": "^8",
+    "prisma": "^5.5.2",
     "tailwindcss": "^3"
   }
 }

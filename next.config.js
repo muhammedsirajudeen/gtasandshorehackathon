@@ -1,6 +1,12 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+const nextAuth = require('next-auth');
 
-module.exports = nextConfig
+module.exports = {
+  reactStrictMode: true,
+
+  // Add the following code to enable JWT for session
+  nextAuth: {
+    session: {
+      jwt: true,
+    },
+  },
+};
