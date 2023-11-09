@@ -9,5 +9,5 @@ export default async function handler(req, res) {
   } else{
     console.log("no session")
   }
-  res.status(200).json({ name: 'John Doe' })
+  res.status(200).json({ name: session.user.name })
 }

@@ -49,9 +49,7 @@ export const authOptions = {
                 try{
                     
                     //checking if user exists in the database
-                    console.log(user)
                     let dbUser=await prisma.user.findFirst({where:{username:user.email}})
-                    console.log(dbUser)
                     if(dbUser){
                         user.id=dbUser.id
                         return true
@@ -81,12 +79,13 @@ export const authOptions = {
             return session
         },
         async jwt({token,account,profile}){
-                console.log(token.sub)
                 let user=await prisma.user.findUnique({where:{id:token.sub}})
-                console.log(user)
                 token.username=user.username 
 
             return token
+        },
+        async redirect(url,baseUrl){
+            return '/home'
         }
     }
 }
