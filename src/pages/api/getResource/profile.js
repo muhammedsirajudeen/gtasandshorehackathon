@@ -27,7 +27,7 @@ export default async function handler(req, res) {
         console.log("no session")
         res.json({message:"session error"})
       }
-      res.status(200).json({ name: session.user.name })
+     
     }catch(error){
       console.log(error)
       res.status(200).json({message:"error"})
