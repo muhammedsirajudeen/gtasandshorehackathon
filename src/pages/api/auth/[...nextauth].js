@@ -5,6 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google";
 import prisma from "@/serverhelper/prisma"
 const { v4: uuidv4 } = require('uuid');
+import { destroyCookie } from 'nookies';
 
 export const authOptions = {
     providers:[
@@ -86,6 +87,11 @@ export const authOptions = {
             return token
         },
         async redirect(url,baseUrl){
+            return "/"
+        },
+        async signOut(){
+            destroyCookie(null, 'next-auth.session-token', { path: '/' });
+            destroyCookie(null,'remember-me',{path:'/'})
             return "/"
         }
     }

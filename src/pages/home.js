@@ -8,6 +8,7 @@ export default  function Home() {
   const {data:session,status}=useSession()
   useEffect(()=>{
     if(status==="authenticated"){
+      console.log(session)
       setLoading(false)
     }else if(status==="unauthenticated"){
       window.location.href="/"

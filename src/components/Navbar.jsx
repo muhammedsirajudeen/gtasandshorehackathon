@@ -17,6 +17,10 @@ export default function Navbar(){
         }
         getProfile()
     },[])
+    async function signoutHandler(){
+            await signOut()
+            localStorage.clear()
+    }
     return(
         <div className="flex w-screen items-center justify-evenly m-3">
             <div className=" font-bold">PROTOTYPE</div>
@@ -30,7 +34,7 @@ export default function Navbar(){
              }
                
             </div>
-            <button onClick={()=>signOut()}  className=" bg-custombgcolor text-white text-xs h-8 w-14 rounded-lg font-light">signout</button>
+            <button onClick={signoutHandler}  className=" bg-custombgcolor text-white text-xs h-8 w-14 rounded-lg font-light">signout</button>
 
         </div>
     )

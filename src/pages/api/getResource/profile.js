@@ -8,12 +8,14 @@ import { authOptions } from "../auth/[...nextauth]"
 import prisma from "@/serverhelper/prisma"
 
 //only use this as a base line image dont forget to put entire thing in try catch blocks
-//do note that the session.user.namae in this context is the username work with that 
+//do note that the session.user.name in this context is the username work with that 
 export default async function handler(req, res) {
     try{
       const session=await getServerSession(req,res,authOptions)
+      console.log(session)
       if(session){
-        let username=session.user.username
+        let username=session.user.name
+        console.log(username)
         let user=await prisma.user.findFirst(
           {
             where:{

@@ -43,7 +43,7 @@ export default function Signup() {
         }
     }
     async function googleHandler(){
-      signIn("google")
+      await signIn("google")
     }
 
     return (
