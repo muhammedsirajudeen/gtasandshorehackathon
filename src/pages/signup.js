@@ -96,7 +96,7 @@ export default function Signup() {
         </div>
 
         <div className="w-full flex justify-center ">
-            <ClockLoader loading={loading} color={"#000000"}/>
+            <ClockLoader loading={loading} color={"#FFFFFF"}/>
         </div>
       </div>
     </div>

@@ -1,18 +1,23 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-
-
+import {useSession } from "next-auth/react"
+import Navbar from "@/components/Navbar"
+import {PulseLoader } from "react-spinners"
 export default  function Home() {
-  const [name,setName]=useState("")
+  const [loading,setLoading]=useState(true)
+  const {data:session,status}=useSession()
   useEffect(()=>{
-    async function getData(){
-      let response=(await axios.get("/api/hello")).data
-      console.log(response)
-      setName(response.name)
+    if(status==="authenticated"){
+      setLoading(false)
+    }else if(status==="unauthenticated"){
+      window.location.href="/"
     }
-    getData()
-  },[])
+  },[session])
   return (
-    <div>hello world {name} </div>
-  )
+    loading? <div className="fixed w-screen h-screen flex items-center justify-center"><PulseLoader loading={loading}/></div> :
+      <div className="flex w-screen h-screen flex-col items-center">
+        <Navbar username={session.user.name} />
+      </div>
+    )
+
 }
