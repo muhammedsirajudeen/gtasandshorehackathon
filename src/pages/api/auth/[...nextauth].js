@@ -60,7 +60,8 @@ export const authOptions = {
                                 data:{
                                     id:user.id,
                                     username:user.email,
-                                    password:"google_provider"
+                                    password:"google_provider",
+                                    profilepicture:user.image
                                 }
                             }
                         )

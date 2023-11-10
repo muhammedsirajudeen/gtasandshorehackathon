@@ -16,7 +16,7 @@ export default  function Home() {
   return (
     loading? <div className="fixed w-screen h-screen flex items-center justify-center"><PulseLoader loading={loading}/></div> :
       <div className="flex w-screen h-screen flex-col items-center">
-        <Navbar username={session.user.name} />
+        <Navbar/>
       </div>
     )
 

@@ -16,5 +16,7 @@ model User {
   id String @id @default(uuid())
   username String
   password String 
+  profilepicture  String?  @default("https://gtasandshorebucket.s3.ap-south-1.amazonaws.com/person.png")
+
 }
 
