@@ -22,7 +22,7 @@ export default  function Home() {
         <Navbar/>
         <div className="w-full flex justify-evenly flex-wrap items-center">
           <div className="bg-green-900 w-52 h-52 rounded-lg flex flex-col items-center justify-center text-white font-extrabold">
-            <a href="/courses">Explore Course</a>
+            <a href="/course/course">Explore Course</a>
             <p className="text-xs m-3">ensure a great future with our courses</p>
           </div>
           <div className="bg-green-600 w-52 h-52 rounded-lg flex flex-col items-center justify-center text-white font-extrabold " >
