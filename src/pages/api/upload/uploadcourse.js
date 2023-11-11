@@ -66,7 +66,8 @@ export default async function handler(req, res) {
                     coursename:req.body.coursename,
                     courseauthor:session.user.name,
                     coursedescription:req.body.coursedescription,
-                    coursevideo:result.Location
+                    coursevideo:result.Location,
+                    tag:req.body.tagline
                   }
                   )
                   await newcourse.save()

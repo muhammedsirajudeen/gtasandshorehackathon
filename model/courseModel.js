@@ -11,7 +11,8 @@ if (mongoose.models && mongoose.models.courseModel) {
             coursename:String,
             coursedescription:String,
             coursevideo:String,
-            courseauthor:String
+            courseauthor:String,
+            tag:String 
         }
     )
 
