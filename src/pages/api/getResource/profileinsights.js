@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
 import { getServerSession } from "next-auth/next"
-import { authOptions } from "./auth/[...nextauth]"
+import { authOptions } from "../auth/[...nextauth]"
 import connectDB from "../../../../helper/dbConnect"
 //only use this as a base line image dont forget to put entire thing in try catch blocks
 
