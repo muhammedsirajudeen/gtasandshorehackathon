@@ -32,7 +32,7 @@ export default function Profile(){
     return(
         <div className="w-screen h-screen flex flex-col items-center justify-start ">
             <Navbar/>
-            <div className="bg-green-800 rounded-lg w-52 h-52 flex flex-col items-center justify-evenly text-white ">
+            <div className="bg-green-800 rounded-lg w-80 h-52 flex flex-col items-center justify-evenly text-white ">
                 <img src={image} className="rounded-full mt-3" width={30}  height={30} ></img>
                 <p className="font-bold mt-3">{username}</p>
                 {facultystatus? <button className="bg-white text-black font-bold rounded-lg" onClick={uploadHandler}>upload</button> : <button onClick={upgradeHandler} className="bg-white text-black font-bold rounded-lg mt-3">upgrade</button> }
