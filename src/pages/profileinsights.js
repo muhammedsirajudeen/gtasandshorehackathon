@@ -16,7 +16,7 @@ export default function Profile(){
         async function getfacultyStatus(){
             let response=(await axios.get("/api/getResource/getfacultyStatus")).data
             console.log(response)
-            if(response.faculty){
+            if(response.facultystatus){
                 setFacultystatus(true)
 
             }
