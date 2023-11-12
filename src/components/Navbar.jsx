@@ -24,6 +24,9 @@ export default function Navbar(){
     return(
         <div className="flex w-screen items-center justify-evenly m-3">
             <div className=" font-bold">OSLP</div>
+            <a href="/course/course" className="font-bold" >COURSES</a> 
+            <a href="/profileinsights" className="font-bold" >PROFILE</a> 
+
             <div className="flex justify-center items-center">
                 {loading ? <PulseLoader loading={loading}/> : 
                 <>

@@ -46,6 +46,7 @@ export default function Courseupload(){
         })).data
         console.log(response.message)
         if(response.message==="success"){
+            alert("success")
             setLoading(false)
         }else{
             alert(response.message)
