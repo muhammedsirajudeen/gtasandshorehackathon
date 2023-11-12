@@ -1,6 +1,36 @@
+# OpenLMS Project
+
+OpenLMS is an open-source Learning Management System (LMS) designed to provide a platform for online education.
+
+## Table of Contents
+
+- [Introduction](#introduction)
+- [Features](#features)
+- [Getting Started](#getting-started)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Introduction
+
+OpenLMS aims to offer a robust and flexible solution for managing and delivering online courses. This README provides an overview of the project and instructions on how to get started.
+
+## Features
+
+- Course management
+- User authentication
+- Quiz and assessment tools
+- Gradebook functionality
+- Discussion forums
+- ...
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+[![Watch the video](https://youtu.be/np4v78Z9GQc)](https://youtu.be/np4v78Z9GQc)
+
+
 ## Getting Started
+
 
 First, run the development server:
 
