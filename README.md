@@ -26,7 +26,9 @@ OpenLMS aims to offer a robust and flexible solution for managing and delivering
 - ...
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-[![Watch the video](https://youtu.be/np4v78Z9GQc)](https://youtu.be/np4v78Z9GQc)
+## DEMO VIDEO
+
+[![Watch the video]](https://youtu.be/np4v78Z9GQc)
 
 
 ## Getting Started
