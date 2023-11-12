@@ -27,7 +27,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## DEMO VIDEO
 
-[![Watch the video]](https://youtu.be/np4v78Z9GQc)
+[![Watch the video]](https://youtu.be/y5RLOA7AdfY)
 
 
 ## Getting Started
