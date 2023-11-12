@@ -26,6 +26,8 @@ export default function Navbar(){
             <div className=" font-bold">OSLP</div>
             <a href="/course/course" className="font-bold" >COURSES</a> 
             <a href="/profileinsights" className="font-bold" >PROFILE</a> 
+            <a href="/chat" className="font-bold" >CHAT</a> 
+
 
             <div className="flex justify-center items-center">
                 {loading ? <PulseLoader loading={loading}/> : 
