@@ -23,7 +23,7 @@ export default function Navbar(){
     }
     return(
         <div className="flex w-screen items-center justify-evenly m-3">
-            <div className=" font-bold">PROTOTYPE</div>
+            <div className=" font-bold">OSLP</div>
             <div className="flex justify-center items-center">
                 {loading ? <PulseLoader loading={loading}/> : 
                 <>

@@ -20,7 +20,7 @@ export default  function Home() {
     loading? <div className="fixed w-screen h-screen flex items-center justify-center "><PulseLoader loading={loading}/></div> :
       <div className="flex w-screen h-screen flex-col items-center">
         <Navbar/>
-        <div className="w-full flex justify-evenly flex-wrap items-center">
+        <div className="w-full flex justify-evenly flex-wrap items-center mt-10">
           <div className="bg-green-900 w-52 h-52 rounded-lg flex flex-col items-center justify-center text-white font-extrabold">
             <a href="/course/course">Explore Course</a>
             <p className="text-xs m-3">ensure a great future with our courses</p>
@@ -28,6 +28,10 @@ export default  function Home() {
           <div className="bg-green-600 w-52 h-52 rounded-lg flex flex-col items-center justify-center text-white font-extrabold " >
             <a href="/profileinsights">Profile Insights</a>
             <p className="text-xs m-3">get insights about your current courses</p>
+          </div>
+          <div className="bg-green-400 w-52 h-52 rounded-lg flex flex-col items-center justify-center text-white font-extrabold " >
+            <a href="/chat">chat</a>
+            <p className="text-xs m-3">chat with your fellow learners</p>
           </div>
         </div>
       </div>

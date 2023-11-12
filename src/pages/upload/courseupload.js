@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import axios from "axios"
 import Navbar from "@/components/Navbar"
-import Tag from "@/components/Tag"
+import StatelessTag from "@/components/StatelessTag" 
 import { PulseLoader } from "react-spinners"
 export default function Courseupload(){
     const [faculty,setFacultystatus]=useState(false)
@@ -57,7 +57,7 @@ export default function Courseupload(){
     <div className="w-screen h-screen flex flex-col justify-start items-center">
     <Navbar />
     <div className="border rounded-lg p-8 flex flex-col items-center justify-start max-w-md mt-8">
-        <Tag setcurrentTag={setcurrentTag} />
+        <StatelessTag setcurrentTag={setcurrentTag} />
 
         <input className="w-full border border-black mt-5 p-2" type="text" placeholder="Enter course name" value={coursename} onChange={(e)=>setCoursename(e.target.value)} />
         <input className="w-full border border-black mt-5 p-2 text-xs h-20" type="text" placeholder="Enter course description" value={coursedescription} onChange={(e)=>setcourseDesciption(e.target.value)}  />

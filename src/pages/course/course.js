@@ -20,7 +20,10 @@ export default function Course(){
         getCourses()
     },[])
 
-    function enrollHandler(e){
+    async function enrollHandler(e){
+        //here we add the course to our user
+        let response=(await axios.post("/api/course/enroll",{id:e.target.id})).data
+
         setId(e.target.id)
         setOpen(true)
     }
@@ -43,7 +46,7 @@ export default function Course(){
                 <p className="text-gray-800 font-bold mb-2">
                   Author: {value.courseauthor}
                 </p>
-                <button onClick={enrollHandler}  className="bg-blue-500 text-white px-4 py-2 rounded-full">
+                <button onClick={enrollHandler} id={value._id}  className="bg-blue-500 text-white px-4 py-2 rounded-full">
                   Enroll
                 </button>
               </div>

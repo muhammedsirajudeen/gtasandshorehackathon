@@ -9,15 +9,15 @@ if (mongoose.models && mongoose.models.profileModel) {
         {
             coursename:String,
             completedlevel:{
-                type:Number,
-                default:0
+                type:Boolean,
+                default:false
             }
                 }
     )
     const profileSchema=new mongoose.Schema(
         {
             username:String,
-            enrolledcourses:[courseSchema] | null
+            enrolledcourses:[courseSchema] 
         }
     )
 

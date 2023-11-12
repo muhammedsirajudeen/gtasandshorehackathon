@@ -5,3 +5,16 @@
 .blur{
     filter:blur(10px)
 }
+.green{
+    background-color: green;
+    min-width: 200px;
+    border-radius: 30px;
+    margin-top: 10px;
+}
+.black{
+    background-color: grey;
+    min-width: 200px;
+    border-radius: 30px;
+    margin-top: 10px;
+    color:white
+}
