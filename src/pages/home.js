@@ -34,11 +34,11 @@ export default  function Home() {
             <p className="text-xs m-3">chat with your fellow learners</p>
           </div>
           <div className="bg-green-600 w-52 h-52 rounded-lg flex flex-col items-center justify-center text-white font-extrabold " >
-            <a href="/chat">create live</a>
+            <a href="/liveclass">create live</a>
             <p className="text-xs m-3">create live and interact with fellow learners</p>
           </div>
           <div className="bg-green-900 w-52 h-52 rounded-lg flex flex-col items-center justify-center text-white font-extrabold " >
-            <a href="/chat">watch live</a>
+            <a href="/watchlive">watch live</a>
             <p className="text-xs m-3">watch live tutorials hosted by mentors</p>
           </div>
           
