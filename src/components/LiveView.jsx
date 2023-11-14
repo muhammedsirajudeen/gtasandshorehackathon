@@ -7,6 +7,7 @@ export default function LiveView({setOpen,id}){
     const connected=useRef(false)
     const globalpeerConnection=useRef("")
     const [loading,setLoading]=useState(true)
+
     const ws=useRef()
     useEffect(()=>{
         if(!connected.current){
@@ -71,12 +72,15 @@ export default function LiveView({setOpen,id}){
                     if (event.streams.length > 0) {
                           //                       remotevideo.srcObject = event.streams[0];
                           // remotevideo.play();
-                        setTimeout(()=>{
-                          console.log("thre remote video is",remotevideo)
-                          remotevideo.srcObject = event.streams[0];
-                          remotevideo.play();
-                          console.log("started playing")
-                        },3000)
+
+                       
+                            console.log("the video element is",remotevideo)
+                            remotevideo.srcObject = event.streams[0];
+                            remotevideo.play();
+                            console.log("started playing")
+                          
+          
+                   
 
                       }
                   };
