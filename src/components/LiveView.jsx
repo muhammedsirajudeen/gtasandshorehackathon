@@ -79,8 +79,11 @@ export default function LiveView({setOpen,id}){
                 icecandidates.forEach((candidate)=>{
                      peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
                 })
-                
-                ws.current.send(JSON.stringify({to:response.live.tutorname,event:"offer",offer:peerConnection.localDescription}))
+                setTimeout(()=>{
+                  console.log("sending offer")
+                  ws.current.send(JSON.stringify({to:response.live.tutorname,event:"offer",offer:peerConnection.localDescription}))
+
+                },[5000])
 
                 //sending answer back
            
