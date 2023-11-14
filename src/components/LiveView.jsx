@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import axios from "axios"
 import { GlobalAccelerator } from "aws-sdk"
+import { ClipLoader } from "react-spinners"
 export default function LiveView({setOpen,id}){
     const [live,setLive]=useState("")
     const connected=useRef(false)
@@ -15,7 +16,8 @@ export default function LiveView({setOpen,id}){
               const socket = new WebSocket(process.env.NEXT_PUBLIC_WEBSOCKET_URI);
               ws.current=socket
               socket.addEventListener('open', (event) => {
-                
+                console.log("socket opened")
+                setLoading(false)
               });
     
               socket.addEventListener('message', (event) => {
@@ -92,16 +94,25 @@ export default function LiveView({setOpen,id}){
         connected.current=true
     },[])
     return(
-        <div className=" border fixed w-screen h-screen flex items-center justify-center top-0 bottom-0">
-            <div className="w-96 h-96 bg-white border border-black flex flex-col items-center justify-start ">
-                <button onClick={()=>setOpen(false)} className="font-bold" >x</button>
-                <video id="remotevideo"></video>
-                <div className="font-bold" >sessionname</div>
-                <div className="text-xs" > {live.sessionname} </div>
-                <div className="font-bold" >sessiondescription</div>
-                <div className="text-xs" > {live.sessiondescription} </div>
+      <>
+    {loading? <div className="w-screen h-screen items-center justify-center"><ClipLoader loading={loading}></ClipLoader></div> 
+    
+  :
+  
+  <div className=" border fixed w-screen h-screen flex items-center justify-center top-0 bottom-0">
+  <div className="w-96 h-96 bg-white border border-black flex flex-col items-center justify-start ">
+      <button onClick={()=>setOpen(false)} className="font-bold" >x</button>
+      <video id="remotevideo"></video>
+      <div className="font-bold" >sessionname</div>
+      <div className="text-xs" > {live.sessionname} </div>
+      <div className="font-bold" >sessiondescription</div>
+      <div className="text-xs" > {live.sessiondescription} </div>
 
-            </div>
-        </div>
+  </div>
+</div>
+  }
+
+
+      </>
     )
 }

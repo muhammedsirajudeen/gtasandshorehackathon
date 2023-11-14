@@ -38,7 +38,6 @@ wss.on('connection', (ws) => {
 
       // subscriber.subscribe(data.message);
     }else if(data.event==="offer"){
-      console.log(data)
       websockets.forEach((value) => {
         if (value.username === data.to) {
           console.log("found")
