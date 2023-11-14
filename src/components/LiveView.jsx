@@ -53,8 +53,18 @@ export default function LiveView({setOpen,id}){
                 let response=(await axios.post("/api/live/getlivebyid",{id:id})).data
                 console.log(response)
                 setLive(response.live)
-                const configuration = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
-                const peerConnection = new RTCPeerConnection(configuration);
+                const configuration = {
+                  iceServers: [
+                    { urls: 'stun:stun.l.google.com:19302' },
+                    { urls: 'stun:stun1.l.google.com:19302' },
+                    { urls: 'stun:stun2.l.google.com:19302' },
+                    { urls: 'stun:stun3.l.google.com:19302' },
+                    { urls: 'stun:stun.stunprotocol.org:3478' },
+                    { urls: 'stun:stun.voipbuster.com:3478' },
+                    { urls: 'stun:stun.ideasip.com:3478' },
+                    // Add more STUN servers as needed
+                  ]
+                };                const peerConnection = new RTCPeerConnection(configuration);
                 let remotevideo=document.querySelector("#remotevideo")
                 peerConnection.ontrack = (event) => {
                     console.log(event.streams[0])
@@ -80,6 +90,7 @@ export default function LiveView({setOpen,id}){
                      peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
                 })
                 setTimeout(()=>{
+                  alert("socket opened")
                   console.log("sending offer")
                   ws.current.send(JSON.stringify({to:response.live.tutorname,event:"offer",offer:peerConnection.localDescription}))
 
