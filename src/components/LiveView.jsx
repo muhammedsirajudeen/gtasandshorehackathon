@@ -69,10 +69,15 @@ export default function LiveView({setOpen,id}){
                 peerConnection.ontrack = (event) => {
                     console.log(event.streams[0])
                     if (event.streams.length > 0) {
-                        
-                        remotevideo.srcObject = event.streams[0];
-                        remotevideo.play();
-                        console.log("started playing")
+                          //                       remotevideo.srcObject = event.streams[0];
+                          // remotevideo.play();
+                        setTimeout(()=>{
+                          console.log("thre remote video is",remotevideo)
+                          remotevideo.srcObject = event.streams[0];
+                          remotevideo.play();
+                          console.log("started playing")
+                        },3000)
+
                       }
                   };
                   

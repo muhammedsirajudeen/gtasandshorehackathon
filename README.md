@@ -22,6 +22,8 @@ OpenLMS aims to offer a robust and flexible solution for managing and delivering
 - User authentication
 - Discussion forums
 - Profile Insights
+- Live video tutorial
+
 - ...
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
