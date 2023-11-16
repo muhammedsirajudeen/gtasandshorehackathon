@@ -4,7 +4,7 @@ import { useSession } from "next-auth/react";
 import Navbar from "@/components/Navbar";
 import axios from "axios";
 import { ClipLoader } from "react-spinners";
-
+import socketHandler from "@/serverhelper/socket";
 // Chat component
 export default function Chat() {
   // Refs, state, and session hook
@@ -54,11 +54,9 @@ export default function Chat() {
         try {
             console.log(process.env.NEXT_PUBLIC_WEBSOCKET_URI)
           const socket = new WebSocket(process.env.NEXT_PUBLIC_WEBSOCKET_URI);
+          //this code of line handles the open and close events
+          socketHandler(socket,session)
 
-          socket.addEventListener('open', (event) => {
-            console.log("the session is",session.user.name)
-            socket.send(JSON.stringify({ event: "clientack", message: session.user.name }));
-          });
 
           socket.addEventListener('message', (event) => {
             let data = JSON.parse(event.data);
@@ -82,10 +80,7 @@ export default function Chat() {
             }
           });
 
-          socket.addEventListener('close', (event) => {
-            alert("try refreshing the page")
-            
-          });
+
 
           connected.current = true;
           ws.current = socket;

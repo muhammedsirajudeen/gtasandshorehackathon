@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import { useSession } from "next-auth/react";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import socketHandler from "@/serverhelper/socket";
 export default function Liveclass(){
     //creating live classes
     const connected=useRef(false)
@@ -12,6 +13,9 @@ export default function Liveclass(){
     const globalpeerConnection=useRef()
     const {data:session,status}=useSession()
     const [loading,setLoading]=useState(true)
+
+
+    
     useEffect(()=>{
       if(status==="authenticated"){
         if(!connected.current){
@@ -20,11 +24,9 @@ export default function Liveclass(){
             console.log(process.env.NEXT_PUBLIC_WEBSOCKET_URI)
           const socket = new WebSocket(process.env.NEXT_PUBLIC_WEBSOCKET_URI);
           ws.current=socket
-          socket.addEventListener('open', (event) => {
-            socket.send(JSON.stringify({ event: "clientack", message: session.user.name }));
- 
-          });
-
+          //this function handles close and open events
+          socketHandler(socket,session)
+          
           socket.addEventListener('message', (event) => {
             let data = JSON.parse(event.data);
             console.log(data)
@@ -41,10 +43,7 @@ export default function Liveclass(){
             }
           });
 
-          socket.addEventListener('close', (event) => {
-            alert("try refreshing the page")
-            
-          });
+
 
           connected.current = true;
           ws.current = socket;
@@ -74,7 +73,7 @@ export default function Liveclass(){
                 const peerConnection = new RTCPeerConnection(configuration);
                 globalpeerConnection.current=peerConnection
                 localVideo.play()
-                stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
+                stream.getTracks().forEach(track => globalpeerConnection.current.addTrack(track, stream));
                 
                 // ... (code for handling WebRTC connections)
               
@@ -94,44 +93,53 @@ export default function Liveclass(){
 
     },[status])
     function liveHandler(){
-      if(sessionname.length<3 && sessiondescription.length<3){
-        alert("please enter session name and description")
-        return
-      }
-      function createOffer() {
-        globalpeerConnection.current.createOffer()
-          .then(offer => globalpeerConnection.current.setLocalDescription(offer))
-          .then(() => {
-            let icecandidates=[]
-            globalpeerConnection.current.onicecandidate = async (event) => {
-              if (event.candidate) {
-                icecandidates.push(event.candidate)
-              }
-             
-              if(icecandidates.length===6){
-                let response=(await axios.post("/api/live/storelive",{
-                  tutorname:session.user.name,
-                  sessionname:sessionname,
-                  sessiondescription:sessiondescription,
-                  offer:JSON.stringify(globalpeerConnection.current.localDescription),
-                  icecandidates:JSON.stringify(icecandidates)
-
-                })).data
-                console.log(response)
-                if(response.message==="success"){
-                  alert("live started succesfully")
-                  setOnline(true)
+      console.log(online)
+      if(!online){
+        
+        if(sessionname.length<3 && sessiondescription.length<3){
+          alert("please enter session name and description")
+          return
+        }
+        function createOffer() {
+          globalpeerConnection.current.createOffer()
+            .then(offer => globalpeerConnection.current.setLocalDescription(offer))
+            .then(() => {
+              let icecandidates=[]
+              globalpeerConnection.current.onicecandidate = async (event) => {
+                if (event.candidate) {
+                  icecandidates.push(event.candidate)
                 }
-                return
-              }
-            };
+               
+                if(icecandidates.length===6){
+                  let response=(await axios.post("/api/live/storelive",{
+                    tutorname:session.user.name,
+                    sessionname:sessionname,
+                    sessiondescription:sessiondescription,
+                    offer:JSON.stringify(globalpeerConnection.current.localDescription),
+                    icecandidates:JSON.stringify(icecandidates)
+  
+                  })).data
+                  console.log(response)
+                  if(response.message==="success"){
+                    alert("live started succesfully")
+                    setOnline(true)
+                  }
+                  return
+                }
+              };
+  
+              
+            });
+        }
+        createOffer()
+        console.log("offer created")
 
-            
-          });
+
       }
-      console.log("offer created")
-      createOffer()
+
+      
     }
+
     return(
         <div className="w-screen h-screen flex flex-col items-center justify-start">
             <Navbar/>
