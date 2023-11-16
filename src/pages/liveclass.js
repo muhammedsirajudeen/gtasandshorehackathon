@@ -100,7 +100,7 @@ export default function Liveclass(){
           alert("please enter session name and description")
           return
         }
-        function createOffer() {
+        
           globalpeerConnection.current.createOffer()
             .then(offer => globalpeerConnection.current.setLocalDescription(offer))
             .then(() => {
@@ -130,8 +130,8 @@ export default function Liveclass(){
   
               
             });
-        }
-        createOffer()
+        
+        
         console.log("offer created")
 
 
