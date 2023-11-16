@@ -145,7 +145,7 @@ export default function LiveView({setOpen,id}){
   <div className=" border fixed w-screen h-screen flex items-center justify-center top-0 bottom-0">
   <div className="w-96 h-96 bg-white border border-black flex flex-col items-center justify-start ">
       <button onClick={()=>setOpen(false)} className="font-bold" >x</button>
-      <video muted id="remotevideo"></video>
+      <video muted={true} autoPlay={false} id="remotevideo"    ></video>
       <div className="font-bold" >sessionname</div>
       <div className="text-xs" > {live.sessionname} </div>
       <div className="font-bold" >sessiondescription</div>
